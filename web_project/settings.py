@@ -133,3 +133,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 CORS_ORIGIN_WHITELIST = [
      'http://localhost:3000'
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.github.dev'
+]

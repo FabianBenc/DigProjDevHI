@@ -1,7 +1,14 @@
 services:
-  web:
+  codespaces:
     build: 
       context: ./
       dockerfile: Dockerfile
+    ports:
+      - "42069:8000"
+
+  azure:
+    build: 
+      context: ./
+      dockerfile: DockerfileAzure
     ports:
       - "8000:8000"
