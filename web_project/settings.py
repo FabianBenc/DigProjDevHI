@@ -25,7 +25,15 @@ SECRET_KEY = 'django-insecure-m+k@=))e_vd70f0&zj!5r!=gn8$_@wyghr$x9u%hhcnwp$rh3r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['blockaid.azurewebsites.net']
+ALLOWED_HOSTS = [
+    'blockaid.azurewebsites.net',
+    'https://blockaid.azurewebsites.net/',
+    'www.blockaid.azurewebsites.net',
+    'https://www.blockaid.azurewebsites.net/',
+    'http://www.blockaid.azurewebsites.net/'
+    
+]
+                 
 
 
 # Application definition
