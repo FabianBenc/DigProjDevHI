@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-m+k@=))e_vd70f0&zj!5r!=gn8$_@wyghr$x9u%hhcnwp$rh3r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*.azurewebsites.net']
 
 
 # Application definition
@@ -131,9 +131,11 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 CORS_ORIGIN_WHITELIST = [
-     'http://localhost:3000'
+     'http://localhost:3000',
+     'https://*.azurewebsites.net'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://*.github.dev'
+    'https://*.github.dev',
+    'https://*.azurewebsites.net'
 ]
