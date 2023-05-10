@@ -1,7 +1,92 @@
-<h1>Django Image Upload</h1>
-<ul>
-  {% for post in object_list %}
-    <h2>{{ post.title }}</h2>
-    <img src="{{ post.choose.url}}" alt="{{ post.description }}">
-  {% endfor %}
-</ul>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.5.1/jscolor.min.js"></script>
+<style>
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+#container {
+  height: 100%;
+  width: 100%;
+
+}
+
+#product-svg {
+  position: relative;
+  z-index: 3;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  mix-blend-mode: multiply;
+  top: 25px;
+  left: 25px;
+}
+
+#background-image{
+  z-index:1;
+}
+
+#product-shape {
+  fill: #DBED64;
+}
+
+.container{
+  display:flex;
+  position:relative;
+}
+
+.svg-template{
+  position:absolute;
+  height:100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  mix-blend-mode: multiply;
+}
+
+.svg-template:hover{
+  fill:none;
+  stroke:aqua;
+  stroke-width: 10px;
+  stroke-linejoin: round;
+}
+
+.jscolor {
+  position: fixed;
+  bottom: 4em;
+  right: 4em;
+  z-index: 3;
+  padding: 1em;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+</style>
+
+<div class="container">
+  {% load static %}
+    <img src="{% static '/whitehoodie.jpg' %}" alt="My image">
+    <svg class="svg-template" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 1200"><polygon id="product-shape" points="360 274 360 266 373 250 374 223 376 207 381 193 389 181 401 174 412 167 425 161 438 156 462 148 480 143 507 138 527 135 548 133 571 131 589 130 604 130 618 130 628 131 640 133 657 134 687 136 700 137 712 138 724 140 734 142 747 145 766 150 780 154 801 161 811 165 816 169 818 172 822 178 829 193 834 203 837 209 843 222 847 232 849 238 849 258 848 265 848 273 847 279 854 280 860 282 866 285 874 290 879 296 883 304 886 310 890 318 895 326 900 337 905 348 909 357 913 366 920 380 925 391 931 403 933 409 934 414 934 420 935 428 936 435 938 446 940 454 942 463 943 470 945 478 947 485 948 492 950 503 954 516 957 529 961 540 964 551 968 563 974 583 978 598 983 613 986 629 991 647 995 660 1000 678 1005 695 1009 711 1014 734 1020 752 1024 770 1030 789 1036 815 1040 834 1044 852 1047 873 1050 890 1052 907 1056 940 1057 959 1058 967 1057 974 1053 977 1050 979 1049 988 1047 992 1047 1004 1048 1022 1050 1032 1050 1043 1035 1046 1005 1052 961 1063 938 1069 929 1069 926 1065 922 1055 920 1046 916 1037 909 1024 902 1012 894 1012 888 1004 880 990 870 973 862 957 855 945 851 936 850 944 849 954 848 968 847 980 847 986 847 994 847 1000 845 1000 845 1005 847 1060 848 1066 848 1069 846 1071 843 1072 684 1071 407 1073 374 1074 336 1075 334 1073 334 1064 335 1053 335 1005 333 1002 334 992 335 991 336 984 337 977 336 930 328 951 323 960 312 979 300 1000 295 1007 293 1009 285 1011 279 1016 274 1022 269 1027 266 1034 263 1042 252 1065 249 1068 247 1069 235 1069 231 1066 220 1061 190 1052 157 1042 141 1038 133 1037 129 1036 128 1032 130 1024 138 990 138 978 137 969 129 959 128 952 128 936 129 924 133 902 142 871 153 830 166 785 180 736 192 696 203 658 215 616 227 574 236 543 247 505 258 465 269 425 271 417 271 408 273 403 277 398 280 390 289 358 301 332 312 311 320 297 327 289 336 284 347 279 360 274"/></svg>
+</div>
+
+<input class="jscolor {onFineChange:'changeColor(this)'}" value="DBED64">
+<script>
+  // Reference the color shape that was drawn over the image
+const overlay = document.getElementById("product-shape");
+
+function changeColor(picker) {
+  // Set the fill style
+  overlay.style.fill = picker.toHEXString();
+}
+</script>
+
