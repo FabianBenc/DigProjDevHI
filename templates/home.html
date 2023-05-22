@@ -72,53 +72,33 @@ html {
   stroke-linejoin: round;
 }
 
-.jscolor {
-  position: fixed;
-  bottom: 4em;
-  right: 4em;
-  z-index: 3;
-  padding: 1em;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
-  border: 0;
-  border-radius: 5px;
-  cursor: pointer;
-}
 
-.jscolor1 {
-  position: fixed;
-  bottom: 4em;
-  right: 21em;
-  z-index: 3;
-  padding: 1em;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
-  border: 0;
-  border-radius: 5px;
-  cursor: pointer;
-}
 
-.jscolor2 {
-  position: fixed;
-  bottom: 4em;
-  right: 38em;
-  z-index: 3;
-  padding: 1em;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
-  border: 0;
-  border-radius: 5px;
-  cursor: pointer;
-}
+.color-picker-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        
+        .color-picker {
+            margin-bottom: 10px;
+            border-color:white;
+        }
+        
+        .save-button {
+            margin-left: 10px;
+            border-radius: 8px;
+            background-color:rgb(179, 243, 179);
+        }
+        
+        .label {
+            font-weight: bold;
+            text-align: center;
+        }
 
-.jscolor3 {
-  position: fixed;
-  bottom: 4em;
-  right: 55em;
-  z-index: 3;
-  padding: 1em;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
-  border: 0;
-  border-radius: 5px;
-  cursor: pointer;
-}
 </style>
 
 <div class="container">
@@ -136,10 +116,20 @@ html {
     </svg>
 </div>
 
-<input class = "jscolor1" data-jscolor="{onInput:'changeTorsoColor(this)'}" value="DBED64">
-<input class = "jscolor2" data-jscolor="{onInput:'changelSleeveColor(this)'}" value="DBED64">
-<input class = "jscolor3" data-jscolor="{onInput:'changerSleeveColor(this)'}" value="DBED64">
-<input data-jscolor="{onInput:'changePocketsColor(this)'}" value="DBED64">
+<div class = "color-picker-container">
+  <label class="label">Torso: </label>
+  <input class = "color-picker" data-jscolor="{onInput:'changeTorsoColor(this)'}" value="DBED64">
+  <button class="save-button">Save</button>
+  <label class="label">Right-sleeve: </label>
+  <input class = "color-picker" data-jscolor="{onInput:'changelSleeveColor(this)'}" value="DBED64">
+  <button class="save-button">Save</button>
+  <label class="label">Left-sleeve: </label>
+  <input class = "color-picker" data-jscolor="{onInput:'changerSleeveColor(this)'}" value="DBED64">
+  <button class="save-button">Save</button>
+  <label class="label">Pockets: </label>
+  <input class = "color-picker" data-jscolor="{onInput:'changePocketsColor(this)'}" value="DBED64">
+  <button class="save-button">Save</button>
+</div>
 
 <script>
   // Reference the color shape that was drawn over the image
