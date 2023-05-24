@@ -148,3 +148,5 @@ CSRF_TRUSTED_ORIGINS = [
     'https://*.github.dev',
     'https://*.azurewebsites.net'
 ]
+
+LOGIN_REDIRECT_URL = "home"
