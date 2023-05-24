@@ -29,7 +29,7 @@ def register(request):
             form.save()
 
             messages.success(request, f'Your account has been created successfully. You can log in.')
-            return redirect(login)
+            return redirect("login")
     else:
         form = UserCreationForm()
 
