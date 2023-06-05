@@ -1,8 +1,7 @@
 from django import forms
-from .models import Post
+from .models import Color
 
-class PostForm(forms.ModelForm):
-
+class ColorForm(forms.ModelForm):
     class Meta:
-        model = Post
-        fields = ["description", "choose"]
+        model = Color
+        fields = ['torso_color','pockets_color','left_sleeve_color','right_sleeve_color']

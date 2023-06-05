@@ -1,11 +1,8 @@
-from django.views.generic import ListView, CreateView  # new
-from django.urls import reverse_lazy  # new
-from .forms import PostForm  # new
-from .models import Post
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from .forms import ColorForm
 
 """
 class HomePageView(ListView):
@@ -13,11 +10,16 @@ class HomePageView(ListView):
     template_name = "home.html"
 """
 
-class CreatePostView(CreateView):  # new
-    model = Post
-    form_class = PostForm
-    template_name = "post.html"
-    success_url = reverse_lazy("home")
+def save_colors(request):
+    if request.method == 'POST':
+        form = ColorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = ColorForm()
+    
+    return render(request, 'home.html', {'form' : form})
 
 def home(request):
     return render(request, "home.html")

@@ -1,8 +1,8 @@
 from django.urls import path
 from blockaid import views
-from blockaid.views import CreatePostView
+from .views import save_colors
 
 urlpatterns = [
     #path("", HomePageView.as_view(), name="home"),
-    path("post/", CreatePostView.as_view(), name="add_post")  # new
+    path('save-colors/', save_colors, name = 'save_colors'),
 ]

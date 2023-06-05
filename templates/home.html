@@ -125,16 +125,23 @@ html {
       </svg>
   </div>
 
-  <div class = "color-picker-container">
-    <label class="label">Torso: </label>
-    <input class = "color-picker" data-jscolor="{onInput:'changeTorsoColor(this)'}" value="DBED64">
-    <label class="label">Right-sleeve: </label>
-    <input class = "color-picker" data-jscolor="{onInput:'changelSleeveColor(this)'}" value="DBED64">
-    <label class="label">Left-sleeve: </label>
-    <input class = "color-picker" data-jscolor="{onInput:'changerSleeveColor(this)'}" value="DBED64">
-    <label class="label">Pockets: </label>
-    <input class = "color-picker" data-jscolor="{onInput:'changePocketsColor(this)'}" value="DBED64">
-    <button class="save-button">Save</button>
+  <div class="color-picker-container">
+    <form method="post" action="{% url 'save_colors' %}">
+      {% csrf_token %}
+      <label class="label">Torso: </label>
+      <input class="color-picker" name="torso_color" data-jscolor="{onInput:'changeTorsoColor(this)'}" value="DBED64">
+  
+      <label class="label">Right-sleeve: </label>
+      <input class="color-picker" name="right_sleeve_color" data-jscolor="{onInput:'changerSleeveColor(this)'}" value="DBED64">
+  
+      <label class="label">Left-sleeve: </label>
+      <input class="color-picker" name="left_sleeve_color" data-jscolor="{onInput:'changelSleeveColor(this)'}" value="DBED64">
+  
+      <label class="label">Pockets: </label>
+      <input class="color-picker" name="pockets_color" data-jscolor="{onInput:'changePocketsColor(this)'}" value="DBED64">
+  
+      <button class="save-button" type="submit">Save</button>
+    </form>
   </div>
 
   <div class="alert alert-success" role="alert">
