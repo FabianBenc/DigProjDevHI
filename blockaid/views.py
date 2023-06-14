@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from .forms import ColorForm
+from .forms import IsInShopForm
 from .models import Color
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
@@ -25,10 +26,12 @@ def save_colors(request):
     else:
         form = ColorForm()
     
-    return render(request, 'home.html', {'form' : form})
+    return render(request, 'save_colors.html', {'form' : form})
 
 def home(request):
-    return render(request, "home.html")
+    colors = Color.objects.filter(is_in_shop = True)
+    print(colors)
+    return render(request, "home.html", {'colors' : colors})
 
 def register(request):
     if request.method == 'POST':
@@ -53,3 +56,14 @@ def my_colors_view(request):
     }
 
     return render(request, 'my_colors.html', context)
+
+def post_design(request):
+    if request.method == 'POST':
+        form = IsInShopForm(request.POST)
+
+        if form.is_valid():
+            color = Color.objects.get(id = form.cleaned_data['color_id'])
+            color.is_in_shop = True
+            color.save()
+
+    return redirect('my_colors')
