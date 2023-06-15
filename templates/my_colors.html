@@ -111,6 +111,13 @@
             <input type="hidden" name="color_id" value="{{ color.id }}">
             <button type="submit" class="customize-button">Add to shop</button>
           </form>
+          {% if color.is_in_shop %}
+            <form action="{% url 'remove_design' %}" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="color_id" value="{{ color.id }}">
+              <button type="submit" class="customize-button">Remove from shop</button>
+            </form>
+          {% endif %}
 
           <script>
             var color = "{{ color.torso_color }}";

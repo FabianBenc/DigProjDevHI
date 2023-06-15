@@ -67,3 +67,14 @@ def post_design(request):
             color.save()
 
     return redirect('my_colors')
+
+def remove_design(request):
+    if request.method == 'POST':
+        form = IsInShopForm(request.POST)
+
+        if form.is_valid():
+            color = Color.objects.get(id = form.cleaned_data['color_id'])
+            color.is_in_shop = False
+            color.save()
+
+    return redirect('my_colors')
