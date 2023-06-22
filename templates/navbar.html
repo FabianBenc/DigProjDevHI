@@ -20,7 +20,7 @@
     
     p {
       margin: 16px;
-      font-size: 50px;
+      font-size: 17px;
       color: #32308b;
       text-transform: uppercase;
       font-weight: 600;
@@ -46,38 +46,50 @@
         }
       }
     }
-  
-    p2 {
-      color: #355088;
-      text-align: center
-    }
     
     nav {
       margin: 25px auto;
       padding: 16px;
-      .menuItems {
+      .menu {
         list-style: none;  
         display: flex;
-        margin: 25px auto;
         
         li {
-          display: inline;
-          padding: 10px 50px;
+          margin: 50px;
+
+          a {
+          text-decoration: none;
+          color: #13237c;
+          font-size: 20px;
+          font-weight: 400;
+          text-transform: uppercase;
+          transition: all 0.2s ease-in-out;
+          position: relative;
+          &::before {
+          content: attr(data-item);
+          transition: 0.5s;
+          color: #8254ff;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 0;
+          overflow: hidden;
           }
+          &:hover {
+          &::before {
+            width: 100%;
+            transition: all 0.5s ease-in-out;
+          }
+          }
+          }  
         }
-      }
-   a {
-      text-decoration: none;
-      color: #13237c;
-      font-size: 20px;
-      font-weight: 400;
-      text-transform: uppercase;
-      transition: all 0.2s ease-in-out;
-      position: relative;
-       }
-   a:hover {
-      color: #fddb3a;
-  }
+           }  
+         }
+        
+    
+  
   
    
   </style>
@@ -85,31 +97,33 @@
   <body>
   
   <div><img src="/images/logo.jpg" alt=""></div>
-  <p data-item='Blockaid'>Blockaid</p>
-  <p2> Your self-prescribed aid to shine </p2>
+
+  <p data-item='Your self-prescribed aid to shine'> Your self-prescribed aid to shine </p>
   
   <section>
-    <nav class="menu">
-      <ul class="menuItems">
-        <li><a class="nav-link" href="{% url 'home'%}" data-item='Home'>Home <span class="sr-only">(current)</span></a>
+    <nav >
+      <ul class="menu">
+        <li><a class="nav-link" href="{% url 'home'%}" data-item='Home'>Home <span class="sr-only"></span></a>
       </li>
         <li><a class="nav-link" href="{% url 'save_colors' %}" data-item='Create'>Create your own design</a>
       </li>
         <li><a class="nav-link" href="{% url 'my_colors' %}" data-item='Designs'>Your Designs</a>
       </li>
+      <li><a class="nav-link" href="{% url 'logout' %}">Logout?</a></li>
       </ul>
     </nav>
   
   </section>
-
-<div class="alert alert-success" role="alert">
-  <h3>Welcome {{ user.username }}!</h3>
-  <a href="{% url 'logout' %}">Logout?</a>
-</div>
-{% else %}
-<div class="alert alert-success" role="alert">
-  <h3>Welcome!</h3>
-  <a href="{% url 'register' %}">Signup</a>
-  <a href="{% url 'login' %}">Login</a>
-</div>
-{% endif %}
+<section>
+  <div class="alert alert-success" role="alert">
+    <h3>Welcome {{ user.username }}!</h3>
+    
+  </div>
+  {% else %}
+  <div class="alert alert-success" role="alert">
+    <h3>Welcome!</h3>
+    <a href="{% url 'register' %}">Signup</a>
+    <a href="{% url 'login' %}">Login</a>
+  </div>
+  {% endif %}
+</section>

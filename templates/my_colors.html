@@ -1,3 +1,4 @@
+{% include 'navbar.html' %}
 <!DOCTYPE html>
 <html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.5.1/jscolor.min.js"></script>
@@ -84,12 +85,13 @@
     font-weight: bold;
     text-align: center;
     }
+
 </style>
 
-{% include 'navbar.html' %}
+
 
 <body>
-    <h1>My Hoodie Colors</h1>
+    <h1>My Designs</h1>
 
     {% for color in colors %}
     <div class="container">
