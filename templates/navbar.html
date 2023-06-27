@@ -3,24 +3,63 @@
 
 {% if user.is_authenticated %}
 <style>
-  * {
-      padding: 0;
-      margin: 0;
-    }
-    
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      min-height: 100vh;
-      font-family: 'Pathway Extreme', sans-serif;
-    }
-    
-    p {
+.menu {
+  font-family: monospace;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.menu * {
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+.menu li {
+  display: inline-block;
+  list-style: outside none none;
+  margin: 0 1.5em;
+  overflow: hidden;
+}
+.menu a {
+  padding: 0.3em 0;
+  color: rgba(2, 15, 39, 0.5);
+  position: relative;
+  display: inline-block;
+  letter-spacing: 1px;
+  margin: 0;
+  text-decoration: none;
+}
+.menu a:before,
+.menu a:after {
+  position: absolute;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+.menu a:before {
+  top: 100%;
+  display: block;
+  height: 3px;
+  width: 100%;
+  content: "";
+  background-color: #0d18ad;
+}
+.menu a:after {
+  padding: 0.3em 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  content: attr(data-hover);
+  color: rgb(6, 86, 206);
+  white-space: nowrap;
+}
+.menu li:hover a,
+.menu .current a {
+  transform: translateY(-100%);
+}
+
+p {
       margin: 16px;
-      font-size: 17px;
+      font-size: 15px;
       color: #32308b;
       text-transform: uppercase;
       font-weight: 600;
@@ -46,53 +85,8 @@
         }
       }
     }
-    
-    nav {
-      margin: 25px auto;
-      padding: 16px;
-      .menu {
-        list-style: none;  
-        display: flex;
-        
-        li {
-          margin: 50px;
-
-          a {
-          text-decoration: none;
-          color: #13237c;
-          font-size: 20px;
-          font-weight: 400;
-          text-transform: uppercase;
-          transition: all 0.2s ease-in-out;
-          position: relative;
-          &::before {
-          content: attr(data-item);
-          transition: 0.5s;
-          color: #8254ff;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          width: 0;
-          overflow: hidden;
-          }
-          &:hover {
-          &::before {
-            width: 100%;
-            transition: all 0.5s ease-in-out;
-          }
-          }
-          }  
-        }
-           }  
-         }
-        
-    
-  
-  
-   
   </style>
+  
   </head>
   <body>
   
@@ -103,13 +97,13 @@
   <section>
     <nav >
       <ul class="menu">
-        <li><a class="nav-link" href="{% url 'home'%}" data-item='Home'>Home <span class="sr-only"></span></a>
+        <li><a class="nav-link" href="{% url 'home'%}" data-hover="Home">Home <span class="sr-only"></span></a>
       </li>
-        <li><a class="nav-link" href="{% url 'save_colors' %}" data-item='Create'>Create your own design</a>
+        <li><a class="nav-link" href="{% url 'save_colors' %}" data-hover="Create Design">Create Design</a>
       </li>
-        <li><a class="nav-link" href="{% url 'my_colors' %}" data-item='Designs'>Your Designs</a>
+        <li><a class="nav-link" href="{% url 'my_colors' %}" data-hover="Your Designs">Your Designs</a>
       </li>
-      <li><a class="nav-link" href="{% url 'logout' %}">Logout?</a></li>
+      <li><a class="nav-link" href="{% url 'logout' %}" data-hover="Logout?">Logout?</a></li>
       </ul>
     </nav>
   

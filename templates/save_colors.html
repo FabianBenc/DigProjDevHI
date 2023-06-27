@@ -3,10 +3,10 @@
 <style>
 body,
 html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
+  margin: 30;
+  padding: 30;
+  height: 50%;
+  width: 50%;
 }
 
 *,
@@ -16,9 +16,8 @@ html {
 }
 
 #container {
-  height: 100%;
-  width: 100%;
-
+  height: 500px;
+  width: 500px;
 }
 
 #product-svg {
@@ -33,7 +32,11 @@ html {
 }
 
 #background-image{
-  z-index:1;
+  display: flex;
+  position: relative;
+  z-index:-1;
+  max-width: 500px;
+  max-height: 500px;
 }
 
 #product-shape {
@@ -53,8 +56,10 @@ html {
 }
 
 .container{
-  display:flex;
+  display: flex;
   position:relative;
+  max-width: 500px;
+  max-height: 500px;
 }
 
 .svg-template{
@@ -68,7 +73,7 @@ html {
 
 .svg-template:hover{
   fill:none;
-  stroke:aqua;
+  stroke:rgb(0, 89, 255);
   stroke-width: 10px;
   stroke-linejoin: round;
 }
@@ -80,30 +85,75 @@ html {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  width: 100%;
+  max-width: 350px;
+  background-color: #b9d2f1;
+  align-items: right;
 }
         
 .color-picker {
   margin-bottom: 10px;
-  border-color:white;
+  border-color:rgb(3, 92, 104);
   cursor:pointer;
 }
-        
+
 .save-button {
-  margin-left: 10px;
-  border-radius: 8px;
-  background-color: limegreen;
-  color:white;
-  border:none;
+  background-color: transparent;
+  border: 1px solid #074786;
+  box-sizing: border-box;
+  color: #00132C;
+  font-family: monospace;
   font-size: 16px;
-  margin: 4px 2px;
-  padding: 5px;
-  text-align: center;
+  font-weight: 700;
+  line-height: 15px;
+  padding: 5px 5px;
+  position: relative;
   text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.save-button:hover,
+.save-button:active {
+  outline: 0;
+}
+
+.save-button:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.save-button:before {
+  background-color: #D5EDF6;
+  content: "";
+  height: calc(100% + 3px);
+  position: absolute;
+  right: -7px;
+  top: -9px;
+  transition: background-color 300ms ease-in;
+  width: 100%;
+  z-index: -1;
+}
+
+.save-button:before {
+  background-color: #2462be;
+}
+
+@media (min-width: 768px) {
+  .save-button {
+    padding: 16px 32px;
+  }
 }
         
 .label {
   font-weight: bold;
-  text-align: center;
+  text-align: right;
+  font-size: 17px;
+  font-family: monospace;
+  display:block;
+  margin-right: auto;
+  width: 80px;
 }
 
 </style>
@@ -132,16 +182,16 @@ html {
       <label class="label">Torso: </label>
       <input class="color-picker" name="torso_color" data-jscolor="{onInput:'changeTorsoColor(this)'}" value="DBED64">
   
-      <label class="label">Right-sleeve: </label>
+      <label class="label">Right sleeve: </label>
       <input class="color-picker" name="right_sleeve_color" data-jscolor="{onInput:'changerSleeveColor(this)'}" value="DBED64">
   
-      <label class="label">Left-sleeve: </label>
+      <label class="label">Left sleeve: </label>
       <input class="color-picker" name="left_sleeve_color" data-jscolor="{onInput:'changelSleeveColor(this)'}" value="DBED64">
   
       <label class="label">Pockets: </label>
       <input class="color-picker" name="pockets_color" data-jscolor="{onInput:'changePocketsColor(this)'}" value="DBED64">
   
-      <button class="save-button" type="submit">Save</button>
+      <button class="save-button" role="button" type="submit">Save</button>
     </form>
   </div>
 {% endif %}
