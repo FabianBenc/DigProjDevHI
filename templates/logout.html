@@ -1,12 +1,32 @@
-
+<style>
+    h2 {
+    font-family: monospace;
+    font-size: 25px;
+    }
+    h3 {
+    font-family: monospace;
+    font-size: 15px;
+    text-align: center;
+    }
+    span {
+    content: "\2639";
+    align-content: center;
+    }
+    a {
+    display: block;
+    }
+</style>
 
 {% block content %}
     <br>
     <div class="alert alert-success" role="alert">
-        <h2 style="text-align: center;">Logged out!</h2>
+        <h2 style="text-align: center;">You logged out!</h2>
     </div>
-
-    <h3>Login again?</h3>
-    <a href="{% url 'login' %}">---> Login</a> <br>
-    <a href="{% url 'home' %}"><--- Or go back to home.</a>
+    <span> &#9785;</span>
+    <br>
+    <h3>Do you want to login again?</h3>
+    <br>
+    <a href="{% url 'login' %}" class="button-login"> <button class="button"> <span>&#8680;</span> Login</button></a> 
+    <br>
+    <a href="{% url 'home' %}" class="button-home"> <button class="button"> <span>&#8680;</span> Go back to home</button></a>
 {% endblock content %}
