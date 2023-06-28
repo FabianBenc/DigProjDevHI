@@ -58,44 +58,71 @@
 }
 
 p {
-      margin: 16px;
-      font-size: 15px;
-      color: #32308b;
-      text-transform: uppercase;
-      font-weight: 600;
-      transition: all 1s ease-in-out;
-      position: relative;
-    
-      &::before {
-        content: attr(data-item);
-        transition: all 1s ease-in-out;
-        color: #6690dfa4;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 0;
-        overflow: hidden;
-      }
-   
+  margin: 16px;
+  font-size: 15px;
+  color: #32308b;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 1s ease-in-out;
+  position: relative;
+
+    &::before {
+    content: attr(data-item);
+    transition: all 1s ease-in-out;
+    color: #6690dfa4;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 0;
+    overflow: hidden;
+    }
       &:hover {
         &::before {
           width: 100%;
         }
       }
     }
+.logo {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 50px;
+  padding: 10px;
+  }
+
+.divider {
+  border: none;
+  height: 1px;
+  background-color: #000;
+  margin: 0;
+}
+.alert {
+  background-color: aqua;
+  font-family: monospace;
+  font-size: 25px;
+  top: 50%;
+  left: 40%;
+}
+.closebtn {
+  margin-left: 15px;
+  color: rgb(6, 75, 35);
+  font-weight: bold;
+  float: right;
+  font-size: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
   </style>
-  
+
   </head>
   <body>
-  
-  <div><img src="/images/logo.jpg" alt=""></div>
-
   <p data-item='Your self-prescribed aid to shine'> Your self-prescribed aid to shine </p>
   
   <section>
     <nav >
+      <img src="C:\\Users\\djram\\OneDrive\\Escritorio\\DigProjDevHI\\images\\logo.jpg" alt="Logo" class="logo">
       <ul class="menu">
         <li><a class="nav-link" href="{% url 'home'%}" data-hover="Home">Home <span class="sr-only"></span></a>
       </li>
@@ -106,15 +133,17 @@ p {
       <li><a class="nav-link" href="{% url 'logout' %}" data-hover="Logout?">Logout?</a></li>
       </ul>
     </nav>
+    <hr class="divider">
   
   </section>
 <section>
-  <div class="alert alert-success" role="alert">
+  <div class="alert col-md-3" role="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;
+    </span> 
     <h3>Welcome {{ user.username }}!</h3>
-    
   </div>
   {% else %}
-  <div class="alert alert-success" role="alert">
+  <div class="alert col-md-3" role="alert">
     <h3>Welcome!</h3>
     <a href="{% url 'register' %}">Signup</a>
     <a href="{% url 'login' %}">Login</a>
