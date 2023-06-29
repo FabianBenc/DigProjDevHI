@@ -57,33 +57,7 @@
   transform: translateY(-100%);
 }
 
-p {
-  margin: 16px;
-  font-size: 15px;
-  color: #32308b;
-  text-transform: uppercase;
-  font-weight: 600;
-  transition: all 1s ease-in-out;
-  position: relative;
 
-    &::before {
-    content: attr(data-item);
-    transition: all 1s ease-in-out;
-    color: #6690dfa4;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 0;
-    overflow: hidden;
-    }
-      &:hover {
-        &::before {
-          width: 100%;
-        }
-      }
-    }
 .logo {
   position: absolute;
   top: 0;
@@ -99,7 +73,7 @@ p {
   margin: 0;
 }
 .alert {
-  background-color: rgb(190, 227, 241);
+  background-color: rgb(222, 243, 217);
   font-family: monospace;
   font-size: 25px;
   text-align: center;
@@ -116,14 +90,13 @@ p {
   transition: 0.3s;
 }
   </style>
-
   </head>
   <body>
-  <p data-item='Your self-prescribed aid to shine'> Your self-prescribed aid to shine </p>
-  
   <section>
     <nav >
-      <img src="C:\\Users\\djram\\OneDrive\\Escritorio\\DigProjDevHI\\images\\logo.jpg" alt="Logo" class="logo">
+      {% load static %}
+      <img src="{% static '/logo.jpg' %}" alt="Logo" class="logo">
+      <br><br>
       <ul class="menu">
         <li><a class="nav-link" href="{% url 'home'%}" data-hover="Home">Home <span class="sr-only"></span></a>
       </li>
