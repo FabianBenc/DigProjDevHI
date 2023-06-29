@@ -28,6 +28,8 @@
   letter-spacing: 1px;
   margin: 0;
   text-decoration: none;
+  margin-bottom: 2;
+  margin-top: 10;
 }
 .menu a:before,
 .menu a:after {
@@ -38,7 +40,7 @@
 .menu a:before {
   top: 100%;
   display: block;
-  height: 3px;
+  height: 2px;
   width: 100%;
   content: "";
   background-color: #0d18ad;
@@ -57,20 +59,12 @@
   transform: translateY(-100%);
 }
 
-
-.logo {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  height: 50px;
-  padding: 10px;
-  }
-
 .divider {
   border: none;
   height: 1px;
   background-color: #000;
   margin: 0;
+  margin-bottom: 5;
 }
 .alert {
   background-color: rgb(222, 243, 217);
@@ -89,14 +83,21 @@
   cursor: pointer;
   transition: 0.3s;
 }
+.logo {
+  width: 330px;
+  height: 140px;
+  position: central;
+  margin-left: 50%;
+  margin-top: 2%;
+  }
   </style>
   </head>
   <body>
   <section>
     <nav >
       {% load static %}
-      <img src="{% static '/logo.jpg' %}" alt="Logo" class="logo">
-      <br><br>
+      <img src="{% static '/logo2.jpg' %}" alt="Logo" class="logo">
+      <hr class="divider">
       <ul class="menu">
         <li><a class="nav-link" href="{% url 'home'%}" data-hover="Home">Home <span class="sr-only"></span></a>
       </li>
