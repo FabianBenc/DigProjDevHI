@@ -19,15 +19,13 @@
     *:after {
     box-sizing: border-box;
     }
-  body {
+    body {
    font-family: monospace;
    align-content: center;
     }
-
     #container {
     height: 100%;
     width: 100%;
-    background-color: aqua;
     }
 
     .container button {
@@ -92,6 +90,10 @@
     .container{
     display:flex;
     position:relative;
+    height: 500px;
+    width: 500px;
+    top: 50%;
+    left: 25%;
     }
 
     .svg-template{
@@ -128,8 +130,9 @@
 
 {% include 'navbar.html' %}
 <body>
-    <h1 style="text-align:center">My Designs
+    <h1 style="text-align:center; font-family: monospace;">My Designs
       <hr class="divider" style="margin: 0 auto; width:18%; height: 2.5px"></h1>
+      <br>
     {% for color in colors %}
     <div class="container">
         {% load static %}
