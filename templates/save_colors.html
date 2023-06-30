@@ -5,8 +5,8 @@
   <style>
   body,
   html {
-  margin: 30;
-  padding: 30;
+  margin: 0;
+  padding: 0;
   height: 100%;
   width: 100%;
   }
@@ -81,22 +81,23 @@
   }
 
   .color-picker-container {
-  position: fixed;
-  margin-top: 20px;
-  margin-right: 5px;
-  margin-left: 5px;
-  bottom: 20px;
-  right: 50px;
   display: flex;
+  position: relative;
+  background-color: #cbddf3;
+  transform: translate(-20%, -5%);
   flex-direction: column;
   align-items: flex-end;
-  width: 100%;
   max-width: 350px;
-  background-color: #cbddf3;
+  max-height: 380px;
   align-items: right;
   border-radius: 10px;
+  }  
+  .container, .color-picker-container {
+  flex: 1;
   }
-        
+  .d-container {
+    display: flex;
+  }
   .color-picker {
   margin-bottom: 10px;
   border-color:rgb(3, 92, 104);
@@ -148,6 +149,7 @@
   .save-button:before {
   background-color: #2462be;
   }
+ 
 
   @media (min-width: 768px) {
   .save-button {
@@ -172,7 +174,7 @@
 
 {% if user.is_authenticated %}
 {% include 'navbar.html' %}
-
+  <div class="d-container"> 
   <div class="container">
     {% load static %}
       <img src="{% static '/whitehoodie.jpg' %}" alt="My image">
@@ -205,6 +207,7 @@
       <br> 
       <button class="save-button" role="button" type="submit">Save</button>
     </form>
+  </div>
   </div>
 {% endif %}
 
