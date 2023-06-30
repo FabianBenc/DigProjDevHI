@@ -6,9 +6,11 @@
 
 <!DOCTYPE html>
 <html>
+<head> 
 <!-- Add any necessary CSS and JS links here -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.5.1/jscolor.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<title>Blockaid</title>
 
 <style>
     html {
@@ -23,7 +25,9 @@
     *:after {
     box-sizing: border-box;
     }
-
+    body {
+    background-color: #f3f6f8a6;
+    }
     #container {
     height: 100%;
     width: 100%;
@@ -143,7 +147,7 @@
     }
     
 </style>
-
+</head>
 <body>
     {% for color in colors %}
     <div class="product-container" id="product-{{ forloop.counter }}">
@@ -187,6 +191,6 @@
         </div>
     </div>
     {%endfor%}
-
+    <br>
 </body>
 </html>

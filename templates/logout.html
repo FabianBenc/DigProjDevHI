@@ -2,7 +2,7 @@
     <title>Logged Out!</title>
 <style>
      body {
-     background-color: aliceblue;
+     background-color: #f3f6f8a6;
     }
     h2 {
     font-family: monospace;
@@ -13,21 +13,23 @@
     font-size: 15px;
     text-align: center;
     }
-    span {
+    .sad{
     content: "\2639";
     align-content: center;
     }
     a {
     display: block;
     }
+
 </style>
 </head>
+<body>
 {% block content %}
     <br>
     <div class="alert alert-success" role="alert">
         <h2 style="text-align: center;">You logged out!</h2>
     </div>
-    <span> &#9785;</span>
+    <span class="sad"> &#9785;</span>
     <br>
     <h3>Do you want to login again?</h3>
     <br>
@@ -35,3 +37,4 @@
     <br>
     <a href="{% url 'home' %}" class="button-home"> <button class="middle-button"> <span>&#8680;</span> Go back to home</button></a>
 {% endblock content %}
+</body>
