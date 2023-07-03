@@ -3,6 +3,9 @@
 <head>
   <title>Create Design</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.5.1/jscolor.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Montserrat:wght@300&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <style>
   
@@ -21,6 +24,7 @@
 
   body {
     background-color: #f3f6f8a6;
+    font-family: 'Montserrat', sans-serif;
   }
   #container {
   height: 500px;
@@ -89,7 +93,7 @@
   .color-picker-container {
   display: flex;
   position: relative;
-  background-color: #cbddf3;
+  background-color: #8a9eb6;
   transform: translate(-20%, -5%);
   flex-direction: column;
   align-items: flex-end;
@@ -119,9 +123,9 @@
   border: 1px solid #074786;
   box-sizing: border-box;
   color: #00132C;
-  font-family: monospace;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: bolder;
   line-height: 15px;
   padding: 5px 5px;
   position: relative;
@@ -142,7 +146,7 @@
   }
 
   .save-button:before {
-  background-color: #D5EDF6;
+  background-color: #def0f7;
   content: "";
   height: calc(100% + 3px);
   position: absolute;
@@ -151,10 +155,7 @@
   transition: background-color 300ms ease-in;
   width: 100%;
   z-index: -1;
-  }
-
-  .save-button:before {
-  background-color: #2462be;
+  background-color: #407dc2;
   }
  
 
@@ -165,10 +166,10 @@
   }
         
   .label {
-  font-weight: bold;
+  font-weight: bolder;
   text-align: right;
   font-size: 17px;
-  font-family: monospace;
+  font-family: 'Montserrat', sans-serif;
   display:block;
   margin-right: auto;
   width: 80px;

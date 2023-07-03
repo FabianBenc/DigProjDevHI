@@ -1,12 +1,15 @@
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.5.1/jscolor.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo&family=Montserrat:wght@300&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
 {% if user.is_authenticated %}
 <style>
 .menu {
-  font-family: monospace;
+  font-family: 'Montserrat', sans-serif;
   text-align: center;
   text-transform: uppercase;
   font-weight: 500;
@@ -28,6 +31,7 @@
   position: relative;
   display: inline-block;
   letter-spacing: 1px;
+  font-weight: bolder;
   margin: 0;
   text-decoration: none;
   margin-bottom: 2;
@@ -70,7 +74,7 @@
 }
 .alert {
   background-color: rgb(222, 243, 217);
-  font-family: monospace;
+  font-family: 'Montserrat', sans-serif;
   font-size: 25px;
   text-align: center;
   top: 50%;
