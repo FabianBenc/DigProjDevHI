@@ -31,23 +31,14 @@
     background-color: #f3f6f8a6;
     }
 
-    .fancy {
-    position: relative;
-    white-space: nowrap;
-    &:after {
-    --deco-height: 0.3125em;
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: calc(var(--deco-height) * -0.625);
-    height: var(--deco-height);
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23a)'%3E%3Cpath d='M-17 30.5C-1 22 72-4 54 13 37.9 28.2-2.5 57.5 16 55.5s72-29 104-40' stroke='%2300FDCF' stroke-width='10'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='a'%3E%3Cpath fill='%23fff' d='M0 0h100v64H0z'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
-    background-size: auto 100%;
-    background-repeat: round;
-    background-position: 0em;
-    }
-    }
+   h1 {
+    font-size: 50px;
+    font-weight: 500;
+    background-image:repeating-radial-gradient(circle closest-corner at 100px 100px, #264996, #2d88dd 10%, #11057c 20%);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+   }
 
     #container {
     height: 100%;
@@ -81,7 +72,7 @@
     }
 
     .container button:before {
-    background-color: #D5EDF6;
+    background-color: #8fe3e9; 
     content: "";
     height: calc(100% + 3px);
     position: absolute;
@@ -118,9 +109,8 @@
     position:relative;
     height: 500px;
     width: 500px;
-    margin-bottom: 5px;
-    border: 1px solid #000000;
-    white-space: break-spaces;
+    margin-bottom: 15px;
+    white-space: pre-line;
     }
 
     .svg-template{
@@ -155,12 +145,12 @@
 </style>
 </head>
 <body>
-    <h1 style="text-align:center; font-family: 'Montserrat', sans-serif;"><span class="fancy">My Designs</span></h1>
+    <h1 style="text-align:center; font-family: 'Montserrat', sans-serif;">My Designs<h1>
       <br>
     {% for color in colors %}
     <div class="container">
         {% load static %}
-          <img src="{% static '/whitehoodie.jpg' %}" alt="My image">
+          <img style="box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;" src="{% static '/whitehoodie.jpg' %}" alt="My image">
           <svg class="svg-template" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 1200 1200" ><path id="torso-svg-{{ forloop.counter }}" d="M850.88,278.24l-4.41,1.41,2.82-20.12V244l-.7-8.82-5.65-13.42-9.18-21.52-14.47-27.89-15.53-10.59-27.88-9.88L748,145.18l-32.47-6.71-29.29-3.18-26.12-1.76-22.59-1.77-22.94-3.17H589.88l-31.41,2.47-42.71,5.65-20.11,3.17-24.71,5.3-24.7,7.41-20.48,8.82-15.17,7.06-15.53,9.18-9.88,8.82-4.24,7.77L378.12,202l-1.77,9.18-1.76,10.94-1.06,10.94v13.41l-1.06,4.94-6.35,7.41-6.71,15.89-26.7,12.11v8l.94,3.3v4.7l-.94,4.94v12l.47,4.71.47,3.77,1.64,4.7v9.88l.95,5.18v5.88l.94,9.18,1.17,18.82L340,399.29l1.18,15.06.94,6.12v7.06l.94,8L344,472l-.47,128-1.41,86.35-2.36,60.71-3.05,65.65v53.41l.23,56.47v13.88l.24,16.59-.36,18.7-.7,10.59-1.77,7.41-1.64,6.36v5.29l2.7,6.35-.35,9.89.35,14.82v14.12l-.7,12.35-.71,9.77.35,7.53,101.3-3.53,150-1.06,99.53-.36,127.06,1.77,31.76-.71,3.53-2.64v-15.36l-2.12-15.17-.35-29.3v-9.17l2.47-3.18V962.24l3.35-25.42,13.59-652.58ZM810.47,941.76l-27.88,66-357.53-2.11-26.12-67.41,54-204.36L499.88,730l49.41-3.53h54.36l69.88,2.12,46.23,1.59,42,1.58,15.18,71.65,18.35,81.18,15.18,52.94Z"/></svg>
           <svg class="svg-template" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200">
             <path id="pockets-svg-{{ forloop.counter }}" d="m452.94 733.88 46.94-3.88 49.41-3.53h54.36l69.88 2.12 46.23 1.59 42 1.58 15.18 71.65 18.35 81.18 15.18 52.94v4.23l-27.88 66-357.53-2.11-26.12-67.41 54-204.36z"/>
@@ -176,13 +166,13 @@
           <form action="{% url 'post_design' %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="color_id" value="{{ color.id }}">
-            <button type="submit" class="customize-button">Add to shop</button>
+            <button style="margin-left: 20px;" type="submit" class="customize-button">Add to shop</button>
           </form>
           {% elif color.is_in_shop %}
             <form action="{% url 'remove_design' %}" method="POST">
               {% csrf_token %}
               <input type="hidden" name="color_id" value="{{ color.id }}">
-              <button type="submit" class="customize-button">Remove from shop</button>
+              <button style="margin-left: 20px;" type="submit" class="customize-button">Remove from shop</button>
             </form>
           {% endif %}
 
@@ -207,5 +197,6 @@
 
     </div>
     {%endfor%}
+    <br>
 </body>
 </html>
