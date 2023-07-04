@@ -4,9 +4,12 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from .forms import ColorForm
 from .forms import IsInShopForm
+from .forms import ProductForm
 from .models import Color
+from .models import Product
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
+from django.core.exceptions import MultipleObjectsReturned
 import json
 
 """
@@ -28,6 +31,7 @@ def save_colors(request):
     
     return render(request, 'save_colors.html', {'form' : form})
 
+@login_required(login_url="/login")
 def home(request):
     colors = Color.objects.filter(is_in_shop = True)
     print(colors)
@@ -52,19 +56,22 @@ def my_colors_view(request):
     colors = Color.objects.filter(user=user)
 
     context = {
-        'colors': colors
+        'colors': colors,
+        'form': ProductForm
     }
 
     return render(request, 'my_colors.html', context)
 
 def post_design(request):
     if request.method == 'POST':
-        form = IsInShopForm(request.POST)
-
+        form = ProductForm(request.POST)
         if form.is_valid():
-            color = Color.objects.get(id = form.cleaned_data['color_id'])
-            color.is_in_shop = True
-            color.save()
+            color = form.save()  
+            color1 = Color.objects.get(id = color.colors.id)
+            color1.is_in_shop = True
+            color1.save()
+        else:
+            form = ProductForm()
 
     return redirect('my_colors')
 
@@ -73,8 +80,34 @@ def remove_design(request):
         form = IsInShopForm(request.POST)
 
         if form.is_valid():
-            color = Color.objects.get(id = form.cleaned_data['color_id'])
-            color.is_in_shop = False
-            color.save()
+            color_id = form.cleaned_data['color_id']
+            try:
+                color = Color.objects.get(id=color_id)
+                products = Product.objects.filter(colors=color)
+                if products.exists():
+                    products.delete()  # Delete all matching products
+                    color.is_in_shop = False
+                    color.save()
+            except (Color.DoesNotExist, MultipleObjectsReturned):
+                pass 
+
 
     return redirect('my_colors')
+
+def add_to_cart(request):
+    if request.method == "POST":
+        color_id = request.POST.get('color_id')
+        color = Color.objects.get(cl = color_id)
+        user = request.user
+
+def create_product(request):
+    if request.method == "POST":
+        form = ProductForm(request.POST)
+        print(form)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = ProductForm
+    return render(request, 'my_colors.html', {'form': form})
+
