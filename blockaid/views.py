@@ -94,12 +94,6 @@ def remove_design(request):
 
     return redirect('my_colors')
 
-def add_to_cart(request):
-    if request.method == "POST":
-        color_id = request.POST.get('color_id')
-        color = Color.objects.get(cl = color_id)
-        user = request.user
-
 def create_product(request):
     if request.method == "POST":
         form = ProductForm(request.POST)
