@@ -6,12 +6,69 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
-{% if user.is_authenticated %}
+
 <style>
 
   h3{
-    text-decoration: underline purple;
+  text-decoration: underline purple;
   }
+
+    .text-container h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 35px;
+    text-align: center;
+    margin-top: 3%;
+    background-image:repeating-radial-gradient(circle closest-corner at 100px 100px, #264996, #2d88dd 10%, #11057c 20%);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    }
+
+    .buttons-container{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 75px;
+    margin-bottom: 15px;
+    }
+
+    .button {
+    position: relative;
+    padding: 1rem 2rem 0.5rem 2.5rem;
+    margin: 0 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    border: 2px solid #042366;
+    -webkit-transition: padding 0.3s ease-in-out;
+    transition: padding 0.3s ease-in-out;
+    font-size: 12px;
+    }
+
+    .button:before {
+    content: "";
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    background-color: #2672b8;
+    border-right: 1.7px solid #040a58;
+    border-bottom: 1.7px solid #040a58;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    }
+
+    .button:hover {
+    padding: 0.75rem 2.25rem;
+    }
+
+    .button:hover:before {
+    top: 0;
+    left: 0;
+    }
+
 .menu {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
@@ -93,6 +150,7 @@
   cursor: pointer;
   transition: 0.3s;
 }
+
 .logo {
   width: 330px;
   height: 140px;
@@ -101,15 +159,15 @@
   margin-top: 2%;
   }
 
- .join {
-  display: block;
-  text-align: center;
-  line-height: 1.5;
- }
+  .no-log{
+    height: 200px;
+
+  }
 
   </style>
   </head>
   <body>
+    {% if user.is_authenticated %}
   <section>
     <nav>
       {% load static %}
@@ -131,18 +189,20 @@
 <section>
   <br>
   <div class="alert col-md-3" role="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;
-    </span> 
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
     <h3>Welcome {{ user.username }}!</h3>
   </div>
 </section>
-  {% else %}
 
-    <h1 style="font-family: 'Montserrat', sans-serif; font-weight: bolder; font-size: 60px; text-align: center; margin: 0 auto;">Join Blockaid!</h1>
-    <br>
-    <div class="container">
-    <a class="join" href="{% url 'register' %}" class="button-signup"><button class="middle-button">Signup</button></a>
-    <a class="join" href="{% url 'login' %}" class="button-login"><button class="middle-button">Login</button></a>
+{% else %}
+  
+  <div class="text-container">
+    <h2>JOIN BLOCKAID!</h2>
   </div>
-  </body>
+
+    <div class="buttons-container">
+      <a class="button" href="{% url 'register' %}">Signup</a>
+      <a class="button" href="{% url 'login' %}">Login</a>
+    </div>
+</body>
 {% endif %}

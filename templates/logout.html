@@ -12,39 +12,123 @@
     h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 35px;
-    text-shadow: 3px 3px 6px rgb(248, 156, 156);
+    text-shadow: 3px 3px 6px rgb(75, 134, 202);
     text-transform: uppercase;
     }
+
     h3 {
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     text-align: center;
+    padding-top: 25px;
     }
+
     .sad{
     content: "\2639";
     align-content: center;
+    font-size: 50px;
     }
-    .go-back {
-    display: block;
+
+    .sad-container{
+    align-items: center;
     text-align: center;
-    line-height: 1.5;
+    width: 100px;
+    height: 50px;
+    padding-left: 46%;
+    padding-top: 30px;
     }
+
+    .hit-the-floor {
+    color: rgb(33, 91, 145);
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    text-shadow: 
+    0 1px 0 #ccc, 
+    0 2px 0 #c9c9c9, 
+    0 3px 0 #bbb, 
+    0 4px 0 #b9b9b9, 
+    0 5px 0 #aaa, 
+    0 6px 1px rgba(0,0,0,.1), 
+    0 0 5px rgba(0,0,0,.1), 
+    0 1px 3px rgba(0,0,0,.3), 
+    0 3px 5px rgba(0,0,0,.2), 
+    0 5px 10px rgba(0,0,0,.25), 
+    0 10px 10px rgba(0,0,0,.2), 
+    0 20px 20px rgba(0,0,0,.15);
+    }
+
+    .hit-the-floor {
+    text-align: center;
+    }
+
+    .a{
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .button-container{
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 100px;
+    }
+
+    .button {
+    position: relative;
+    padding: 1rem 2rem 0.5rem 2.5rem;
+    margin: 0 15px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    border: 2px solid #042366;
+    -webkit-transition: padding 0.3s ease-in-out;
+    transition: padding 0.3s ease-in-out;
+    }
+
+    .button:before {
+    content: "";
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    background-color: #2672b8;
+    border-right: 3px solid #040a58;
+    border-bottom: 3px solid #040a58;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    }
+
+    .button:hover {
+    padding: 0.75rem 2.25rem;
+    }
+
+    .button:hover:before {
+    top: 0;
+    left: 0;
+    }
+
 </style>
 </head>
 <body>
 {% block content %}
     <br>
-    <div class="alert alert-success" role="alert">
-        <h2 style="text-align: center;">You logged out!</h2>
+    <div class="hit-the-floor">You logged out!</div>
+    
+    <div class="sad-container">
+        <span class="sad"> &#9785;</span>
     </div>
-    <span class="sad"> &#9785;</span>
+    
     <br>
     <h3>Do you want to login again?</h3>
     <br>
-    <a class="go-back" href="{% url 'login' %}" class="button-login"> <button class="middle-button"> <span>&#8680;</span> Login</button></a> 
-    <br>
-    <a class="go-back" href="{% url 'home' %}" class="button-home"> <button class="middle-button"> <span>&#8680;</span> Go back to home</button></a>
-    
+    <div class="button-container">
+    <a class="button" href="{% url 'login' %}"> <span>&#8680;</span> Login</a> 
+    <a class="button" href="{% url 'home' %}"> <span>&#8680;</span> Go back to home</a>
+    </div>
     
 {% endblock content %}
 </body>
