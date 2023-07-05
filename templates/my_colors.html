@@ -165,7 +165,7 @@
           {% if not color.is_in_shop %}
           <form action="{% url 'post_design' %}" method="POST">
             {% csrf_token %}
-            <input type="hidden" name="color_id" value="{{ color.id }}">
+            <input type="hidden" name="colors" value="{{ color.id }}">
             <input type="text" name="name">
             <input type="text" name="price">
             <button style="margin-left: 20px;" type="submit" class="customize-button">Add to shop</button>
@@ -173,7 +173,7 @@
           {% elif color.is_in_shop %}
             <form action="{% url 'remove_design' %}" method="POST">
               {% csrf_token %}
-              <input type="hidden" name="color_id" value="{{ color.id }}">
+              <input type="hidden" name="colors" value="{{ color.id }}">
               <button style="margin-left: 20px;" type="submit" class="customize-button">Remove from shop</button>
             </form>
           {% endif %}

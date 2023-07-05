@@ -1,5 +1,5 @@
 {% include 'navbar.html' %}
-
+{% if user.is_authenticated %}
 
 <!-- home.html -->
 
@@ -597,5 +597,5 @@ textarea {
       </div>
 </body>
 </html>
-{% else%}
+
 {% endif %}
