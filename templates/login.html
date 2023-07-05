@@ -1,11 +1,46 @@
-<h3>login</h3>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+	
+    <title>Login</title>
+	
+<style>
 
-<form action="" method="POST">
-    {% csrf_token %}
-    {% for field in form %}
-        <p>{{ field.label }}: <br> {{ field }}</p>
-    {% endfor %}
-    <button type="submit">Login</button>
-</form>
+    body {
+    background-color: aliceblue;
+    font-family: 'Montserrat', sans-serif;
+    }
 
-<p>Don't have an account? <a href="{% url 'register' %}">Signup here</a></p>
+    main {
+    display: block;
+    }
+ </style>
+</head>
+
+<body>
+	<div class="main">  	
+			<div class="signup">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <p>{{ field.label }}: <br> {{ field }}</p>
+                    {% endfor %}
+                    <button type="submit">Signup</button>
+                </form>
+			</div>
+
+			<div class="login">
+				<form action="" method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <p>{{ field.label }}: <br> {{ field }}</p>
+                    {% endfor %}
+                    <button type="submit">Login</button>
+                </form>
+			</div>
+	</div>
+</body>
+</html>
