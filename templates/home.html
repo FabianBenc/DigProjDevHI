@@ -1,5 +1,6 @@
 {% include 'navbar.html' %}
 
+
 <!-- home.html -->
 
 <!DOCTYPE html>
@@ -557,7 +558,6 @@ textarea {
                     var color = "{{ color.right_sleeve_color }}";
                     var pathId = "right-sleeve-svg-{{ forloop.counter }}";
                     document.getElementById(pathId).setAttribute("fill", color);
-        
                 </script>
         </div>
     </div>
@@ -597,3 +597,5 @@ textarea {
       </div>
 </body>
 </html>
+{% else%}
+{% endif %}
