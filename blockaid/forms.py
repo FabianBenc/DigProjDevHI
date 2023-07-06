@@ -1,5 +1,6 @@
 from django import forms
 from .models import Color
+from .models import Product
 
 class ColorForm(forms.ModelForm):
     class Meta:
@@ -8,3 +9,10 @@ class ColorForm(forms.ModelForm):
 
 class IsInShopForm(forms.Form):
     color_id = forms.CharField(max_length=255)
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['name', 'price', 'colors']
+        widgets = {'colors': forms.HiddenInput()}
+

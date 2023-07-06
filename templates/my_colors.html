@@ -166,7 +166,13 @@
           <form action="{% url 'post_design' %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="color_id" value="{{ color.id }}">
+<<<<<<< HEAD
             <button style="margin-left: 20px;" class="customize-button">Add to shop</button>
+=======
+            <input type="text" name="name">
+            <input type="text" name="price">
+            <button style="margin-left: 20px;" type="submit" class="customize-button">Add to shop</button>
+>>>>>>> 242240a19b5d3f5a9b6f2de2a718796783473885
           </form>
           {% elif color.is_in_shop %}
             <form action="{% url 'remove_design' %}" method="POST">
