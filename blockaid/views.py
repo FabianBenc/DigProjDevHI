@@ -31,7 +31,6 @@ def save_colors(request):
     
     return render(request, 'save_colors.html', {'form' : form})
 
-@login_required(login_url="/login")
 def home(request):
     colors = Color.objects.filter(is_in_shop = True)
     print(colors)
