@@ -104,7 +104,7 @@ html {
   .color-picker-container {
   display: flex;
   position: relative;
-  background-color: #8a9eb6;
+  background-color: #9cb2cc;
   transform: translate(-20%, -5%);
   flex-direction: column;
   align-items: flex-end;
@@ -112,7 +112,7 @@ html {
   max-height: 380px;
   align-items: right;
   top: 75px;
-  right: 100px;
+  right: 80px;
   border-radius: 10px; 
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   }  
@@ -126,12 +126,13 @@ html {
   margin-bottom: 10px;
   border-color:rgb(3, 92, 104);
   cursor:pointer;
-  margin-right: 50px;
+  margin-left: 50px;
+  background-color: #e8ebf0;
   }
 
   .save-button {
   margin-top: 10px;
-  margin-left: 20%;
+  margin-left: 35%;
   background-color: transparent;
   border: 1px solid #074786;
   box-sizing: border-box;
@@ -181,11 +182,11 @@ html {
         
   .label {
   font-weight: bolder;
-  text-align: right;
+  text-align: left;
   font-size: 17px;
   font-family: 'Montserrat', sans-serif;
   display:block;
-  margin-right: auto;
+  margin-left: 50px;
   width: 80px;
   white-space: nowrap;
   margin-top: 12px;
@@ -214,16 +215,16 @@ html {
       </svg>
   </div>
 
-  <div>
+  <div class="color-picker-container">
     <form method="post" action="{% url 'save_colors' %}">
       {% csrf_token %}
       <label class="label">Torso: </label>
       <input class="color-picker" name="torso_color" data-jscolor="{onInput:'changeTorsoColor(this)', preset:'pantone'}">
   
-      <label class="label">Right-sleeve: </label>
+      <label class="label">Right sleeve: </label>
       <input class="color-picker" name="right_sleeve_color" data-jscolor="{onInput:'changerSleeveColor(this)', preset:'pantone'}">
   
-      <label class="label">Left-sleeve: </label>
+      <label class="label">Left sleeve: </label>
       <input class="color-picker" name="left_sleeve_color" data-jscolor="{onInput:'changelSleeveColor(this)', preset:'pantone'}">
   
       <label class="label">Pockets: </label>
