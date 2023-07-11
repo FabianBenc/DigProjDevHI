@@ -1,0 +1,52 @@
+{% include 'navbar.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    html {
+    margin: 0;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    }
+
+    *,
+    *:before,
+    *:after {
+    box-sizing: border-box;
+    }
+
+    body {
+    font-family: 'Montserrat', sans-serif;
+    align-content: center;
+    background-color: #f3f6f8a6;
+    }
+
+   h1 {
+    font-size: 50px;
+    font-weight: 500;
+    background-image:repeating-radial-gradient(circle closest-corner at 100px 100px, #264996, #2d88dd 10%, #11057c 20%);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+   }
+</style>
+
+<body>
+<h1>Your Cart</h1>
+
+{% for product in products %}
+    <div>
+        <h2>{{ product.name }}</h2>
+        <p>Size: {{ product.size }}</p>
+        <p>Price: ${{ product.price }}</p>
+        <p>Quantity: {{ product.quantity }}</p>
+        <!-- Add more details as needed -->
+    </div>
+{% empty %}
+    <p>No products added to the shop yet.</p>
+{% endfor %}
+<button type="submit" class="customize-button">Order</button>
+</body>
+</head>
+</html>

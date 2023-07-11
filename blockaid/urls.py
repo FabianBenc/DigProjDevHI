@@ -4,6 +4,7 @@ from .views import save_colors
 from .views import my_colors_view
 from .views import post_design
 from .views import remove_design
+from .views import my_cart_view
 
 urlpatterns = [
     #path("", HomePageView.as_view(), name="home"),
@@ -11,5 +12,6 @@ urlpatterns = [
     path('my-colors/', my_colors_view, name = 'my_colors'),
     path('post-design/', post_design, name = 'post_design'),
     path('remove-design/', remove_design, name = 'remove_design'),
+    path('my_cart/', my_cart_view, name = 'my_cart'),
     #path('hoodie-designer/', my_colors_view, name = 'my_colors'),
 ]

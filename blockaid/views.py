@@ -52,11 +52,13 @@ def register(request):
 
 def my_colors_view(request):
     user = request.user
+    colors = Color.objects.filter(is_in_shop = True)
     colors = Color.objects.filter(user=user)
 
     context = {
         'colors': colors,
-        'form': ProductForm
+        'form': ProductForm,
+        'product': Product()
     }
 
     return render(request, 'my_colors.html', context)
@@ -65,6 +67,9 @@ def post_design(request):
     if request.method == 'POST':
         form = ProductForm(request.POST)
         if form.is_valid():
+            product = form.save(commit=False)
+            product.size = form.cleaned_data['size']  # Assign the selected size value
+            product.save()
             color = form.save()  
             color1 = Color.objects.get(id = color.colors.id)
             color1.is_in_shop = True
@@ -103,4 +108,17 @@ def create_product(request):
     else:
         form = ProductForm
     return render(request, 'my_colors.html', {'form': form})
+
+@login_required
+def my_cart_view(request):
+    user = request.user
+    products = Product.objects.filter(colors__user=user, colors__is_in_shop=True)
+    form = ProductForm()
+
+    context = {
+        'products': products,
+        'form': form,
+    }
+
+    return render(request, 'my_cart.html', context)
 

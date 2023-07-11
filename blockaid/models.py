@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from decimal import Decimal
 
 
 class Color(models.Model):
@@ -14,9 +15,16 @@ class Size(models.Model):
     size = models.CharField(max_length=50)
 
 class Product(models.Model):
+    SIZE_CHOICES = [
+        ('S', 'Small'),
+        ('M', 'Medium'),
+        ('L', 'Large'),
+    ]
     name = models.CharField(max_length=255)
     colors = models.ForeignKey(Color, on_delete=models.CASCADE)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('60.00'))
+    size = models.CharField(max_length=1, choices=SIZE_CHOICES)
+    quantity = models.PositiveBigIntegerField(default=1)
     available = models.BooleanField(default=True)
 
 class Order(models.Model):

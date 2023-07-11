@@ -13,6 +13,6 @@ class IsInShopForm(forms.Form):
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'price', 'colors']
-        widgets = {'colors': forms.HiddenInput()}
+        fields = ['name', 'colors', 'size']
+        widgets = {'colors': forms.HiddenInput(), 'size': forms.Select()}
 
