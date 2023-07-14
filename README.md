@@ -1,5 +1,6 @@
 # DigProjDevHI
 #Github Codespaces:
+for migrations run: python manage.py migrate
 run command: python manage.py runserver
 
 #Live env:
