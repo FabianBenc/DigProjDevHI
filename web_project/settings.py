@@ -32,7 +32,7 @@ ALLOWED_HOSTS = [
     'https://www.blockaid.azurewebsites.net/',
     'http://www.blockaid.azurewebsites.net/',
     '127.0.0.1',
-    'localhost'
+    'localhost',
 ]
                  
 
